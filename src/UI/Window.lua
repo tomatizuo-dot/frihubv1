@@ -13,11 +13,17 @@ function Window.new(Name)
 end
 
 function Window:AddModule(Name)
-    local NewModule = Module.new(Name)
+	local Existing = self:GetModule(Name)
 
-    table.insert(self.Modules, NewModule)
+	if Existing then
+		return Existing
+	end
 
-    return NewModule
+	local NewModule = Module.new(Name)
+
+	table.insert(self.Modules, NewModule)
+
+	return NewModule
 end
 
 function Window:GetModules()
