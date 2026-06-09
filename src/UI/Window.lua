@@ -12,6 +12,18 @@ function Window.new(Name)
     return Self
 end
 
+function Window:GetModule(Name)
+	for _, Module in ipairs(self.Modules) do
+		if Module.Name == Name then
+			return Module
+		end
+	end
+end
+
+function Window:GetModules()
+	return self.Modules
+end
+
 function Window:AddModule(Name)
 	local Existing = self:GetModule(Name)
 
@@ -24,18 +36,6 @@ function Window:AddModule(Name)
 	table.insert(self.Modules, NewModule)
 
 	return NewModule
-end
-
-function Window:GetModules()
-	return self.Modules
-end
-
-function Window:GetModule(Name)
-	for _, Module in ipairs(self.Modules) do
-		if Module.Name == Name then
-			return Module
-		end
-	end
 end
 
 return Window
