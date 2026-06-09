@@ -1,1 +1,13 @@
+*.rbxl
+*.rbxlx
 
+*.rbxm
+*.rbxmx
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+
+*.log
