@@ -1,23 +1,37 @@
+local Window = require(script.Parent.Window)
+
 local Renderer = {}
 
-function Renderer:CreateWindow(Category)
-	-- Combatウィンドウ生成
+function Renderer:RenderCategory(CategoryData)
+	local WindowObject = Window.new(CategoryData.Name)
+
+	for _, ModuleData in ipairs(CategoryData.Modules) do
+		local ModuleObject = WindowObject:AddModule(ModuleData.Name)
+
+		if ModuleData.Settings then
+			for SettingName, SettingValue in pairs(ModuleData.Settings) do
+				ModuleObject:AddSetting(
+					SettingName,
+					SettingValue
+				)
+			end
+		end
+	end
+
+	return WindowObject
 end
 
-function Renderer:CreateModule(ModuleData)
-	-- TriggerBot生成
-end
+function Renderer:Render(Categories)
+	local Windows = {}
 
-function Renderer:CreateToggle(Name, Value)
-	-- Toggle生成
-end
+	for _, Category in ipairs(Categories) do
+		table.insert(
+			Windows,
+			self:RenderCategory(Category)
+		)
+	end
 
-function Renderer:CreateSlider(Name, Slider)
-	-- Slider生成
-end
-
-function Renderer:CreateDropdown(Name, Dropdown)
-	-- Dropdown生成
+	return Windows
 end
 
 return Renderer
