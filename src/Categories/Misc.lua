@@ -1,7 +1,14 @@
 return {
-    Name = "Misc",
+	Name = "Misc",
 
-    Modules = {
-        "AutoRejoin"
-    }
+	Modules = {
+		{
+			Name = "AutoRejoin",
+
+			Settings = {
+				Enabled = false,
+				Delay = 5
+			}
+		}
+	}
 }
