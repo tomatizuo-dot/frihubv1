@@ -10,4 +10,4 @@ local Categories = {
 
 local Windows = Renderer:Render(Categories)
 
-print("Loaded", #Windows, "windows")
+print("Loaded Windows:", #Windows)
