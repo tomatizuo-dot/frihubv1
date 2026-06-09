@@ -20,4 +20,16 @@ function Window:AddModule(Name)
     return NewModule
 end
 
+function Window:GetModules()
+	return self.Modules
+end
+
+function Window:GetModule(Name)
+	for _, Module in ipairs(self.Modules) do
+		if Module.Name == Name then
+			return Module
+		end
+	end
+end
+
 return Window
